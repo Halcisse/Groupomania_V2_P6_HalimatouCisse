@@ -11,6 +11,7 @@ router.get("/:id", auth, postsCtrl.getOnePost);
 router.post("/", auth, multer, postsCtrl.createPost);
 router.put("/:id", auth, multer, postsCtrl.modifyPost);
 router.delete("/:id", auth, multer, postsCtrl.deletePost);
+//router.delete("/:id", auth, multer, postsCtrl.deletePost); FAIRE ROUTE DELETE IMG
 //router.post("/:id/like", auth, postsCtrl.likePost);
 
 module.exports = router;
