@@ -1,5 +1,12 @@
 <template>
-  <div class="header">Home Header</div>
+  <div class="header">
+    <div class="header-titre">GROUPOMANIA</div>
+    <div class="header-nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/login">Connexion</router-link>
+      <router-link to="/signup">Inscription</router-link>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,7 +21,28 @@ export default {
   left: 0;
   right: 0;
   top: 0;
-  padding-bottom: 15px;
-  background-color: aquamarine;
+  padding: 5px;
+  border-bottom: solid 1px #dcdde7;
+  /* background-color: blue; */
+  margin-bottom: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-titre {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  color: #fd2d01;
+}
+.header-nav {
+  width: 40%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #abacb1;
+}
+a:hover {
+  color: #fd2d01;
 }
 </style>

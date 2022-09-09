@@ -11,8 +11,13 @@ body {
   height: 100%;
 }
 #app {
-  border: 1px solid GREEN;
   height: 100%;
   /* background-color: aqua; */
+}
+a {
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  color: #4e5166;
+  transition: 0.2s;
 }
 </style>
