@@ -3,12 +3,11 @@
     <HomeHeader /> <br />
 
     <div class="home-pic">
-      <h1>Rejoignez la communauté Groupomania!</h1>
-
       <img
         src="../assets/groupo-img.jpg"
         alt="illustration du logo groupomania"
       />
+      <h1>Rejoignez la communauté Groupomania!</h1>
     </div>
 
     <FooterBar />
@@ -41,6 +40,9 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+h1 {
+  text-shadow: 2px 2px 4px #edeaea;
 }
 /* img {
   position: absolute;

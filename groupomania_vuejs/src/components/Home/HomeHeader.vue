@@ -33,14 +33,13 @@ export default {
 .header-titre {
   font-family: "Lato", sans-serif;
   font-weight: bold;
-  color: #fd2d01;
+  color: #84868e;
 }
 .header-nav {
   width: 40%;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  color: #abacb1;
 }
 a:hover {
   color: #fd2d01;

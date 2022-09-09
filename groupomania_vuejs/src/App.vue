@@ -17,7 +17,7 @@ body {
 a {
   text-decoration: none;
   font-family: "Lato", sans-serif;
-  color: #4e5166;
+  color: #bebfcb;
   transition: 0.2s;
 }
 </style>
