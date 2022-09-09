@@ -1,20 +1,24 @@
 <template>
-  <div class="public">Home Page</div>
+  <div class="home">
+    <HomeHeader />
+
+    <FooterBar />
+  </div>
 </template>
 
 <script>
+import HomeHeader from "@/components/Home/HomeHeader.vue";
+import FooterBar from "@/components/FooterBar.vue";
+
 export default {
   name: "HomePage",
+  components: { HomeHeader, FooterBar },
 };
 </script>
 
 <style>
-.public {
+.home {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid blue;
 }
 </style>

@@ -9,16 +9,10 @@ import { RouterView } from "vue-router";
 <style>
 body {
   height: 100%;
-  margin: 10px;
-  /* background-color: maroon; */
 }
 #app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  width: 100%;
-  height: auto;
+  border: 1px solid GREEN;
+  height: 100%;
   /* background-color: aqua; */
 }
 </style>
