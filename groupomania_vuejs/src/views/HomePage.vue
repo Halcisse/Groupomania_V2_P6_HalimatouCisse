@@ -15,23 +15,16 @@
 <script>
 import HomeHeader from "@/components/Home/HomeHeader.vue";
 import FooterBar from "@/components/FooterBar.vue";
-
 export default {
   name: "HomePage",
   components: { HomeHeader, FooterBar },
 };
 </script>
 
-<style>
+<style scoped>
 .home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* background-color: red; */
   color: #fd2d01;
   font-family: "Lato", sans-serif;
-  background-size: 100%;
 }
 .home-pic {
   display: flex;

@@ -1,12 +1,12 @@
 <template>
-  <div class="header">
+  <header>
     <div class="header-titre">GROUPOMANIA</div>
     <div class="header-nav">
       <router-link to="/">Home</router-link>
       <router-link to="/login">Connexion</router-link>
       <router-link to="/signup">Inscription</router-link>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -16,12 +16,12 @@ export default {
 </script>
 
 <style>
-.header {
+header {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  padding: 15px;
+  padding: 3px 9px;
   border-bottom: solid 1px #dcdde7;
   display: flex;
   align-items: center;

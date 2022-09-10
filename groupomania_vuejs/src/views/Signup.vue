@@ -1,11 +1,11 @@
 <template>
   <HomeHeader />
-  <div id="inscription_card">
+  <div class="inscription_card">
     <div id="title">
       <h2>Inscription</h2>
-      <p>
+      <p class="subtitle">
         Vous avez déjà un compte?
-        <router-link to="/login">Connectez vous!</router-link>
+        <router-link to="/login">Connectez-vous!</router-link>
       </p>
       <p v-if="errors.length">
         <b>Merci de corriger les erreurs suivantes</b>
@@ -17,60 +17,59 @@
     </div>
     <form @submit.prevent="signup" id="formulaire">
       <div class="champ_formulaire">
-        <label for="lastName">Veuillez entrer votre nom de famille</label>
+        <label for="lastName">Nom </label>
         <input
           type="text"
           name="lastName"
           id="lastName"
-          placeholder="Nom de famille"
+          placeholder="Ex: Durant "
           v-model="user.lastName"
           required
         />
       </div>
       <div class="champ_formulaire">
-        <label for="firstName">Veuillez entrer votre prénom</label>
+        <label for="firstName">Prénom</label>
         <input
           type="text"
           name="firstName"
           id="firstName"
-          placeholder="Prénom"
+          placeholder="Ex: Magalie"
           v-model="user.firstName"
           required
         />
       </div>
       <div class="champ_formulaire">
-        <label for="email">Veuillez entrer votre adresse e-mail</label>
+        <label for="email">Adresse email</label>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="E-mail"
+          placeholder="Ex: nom.prenom@email.com"
           v-model="user.email"
           required
         />
       </div>
       <div class="champ_formulaire">
-        <label for="password">Veuillez entrer votre mot de passe</label>
+        <label for="password">Mot de passe</label>
         <input
           type="password"
           name="password"
           id="password"
-          placeholder="Mot de passe"
+          placeholder="Minimum 6 caractères"
           v-model="user.password"
           required
         />
       </div>
-      <button type="submit" id=" btn_inscription">Inscription</button>
+      <button type="submit" id=" btn_inscription">Je valide</button>
     </form>
   </div>
-  <FooterBar />
 </template>
 
 <!-- cisse hal test3@groupomania.com Groupomani@123 -->
 
 <script>
 import HomeHeader from "@/components/Home/HomeHeader.vue";
-import FooterBar from "@/components/FooterBar.vue";
+
 export default {
   name: "SignUp",
   data() {
@@ -155,29 +154,36 @@ export default {
       }
     },
   },
-  components: { HomeHeader, FooterBar },
+  components: { HomeHeader },
 };
 </script>
 
-<style>
-#inscription_card {
-  margin: 40px 98px;
+<style scoped>
+.inscription_card {
+  max-height: 100%;
+  width: 50%;
+  margin: 30px 0;
 }
-
 #title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
+.subtitle {
+  font-size: 11px;
+}
 p,
-h2,
 label {
-  margin-bottom: 5px;
+  margin: 5px;
   font-family: "Lato", sans-serif;
+  font-size: 13px;
 }
 h2 {
+  margin: 5px;
+  font-family: "Lato", sans-serif;
   color: #fd2d01;
 }
 form {
@@ -189,15 +195,26 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 8px;
+}
+
+input {
+  font-family: "Lato", sans-serif;
+  border: 1px solid #bebfcb;
+  border-radius: 9px;
+  padding: 3px;
+  font-size: 11px;
 }
 
 button {
   margin: 12px;
+  border: 1px solid #fd2d01;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #fd2d01;
 }
 
 .champError {
-  color: red;
+  color: #fd2d01;
   font-size: smaller;
   font-style: italic;
 }
