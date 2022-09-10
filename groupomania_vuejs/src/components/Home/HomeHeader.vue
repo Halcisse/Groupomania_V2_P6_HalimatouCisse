@@ -17,15 +17,12 @@ export default {
 
 <style>
 .header {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  padding: 5px;
+  padding: 15px;
   border-bottom: solid 1px #dcdde7;
-  /* background-color: blue; */
-  margin-bottom: 55px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;

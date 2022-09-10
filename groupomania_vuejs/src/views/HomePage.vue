@@ -1,7 +1,6 @@
 <template>
+  <HomeHeader /> <br />
   <div class="home">
-    <HomeHeader /> <br />
-
     <div class="home-pic">
       <img
         src="../assets/groupo-img.jpg"
@@ -9,9 +8,8 @@
       />
       <h1>Rejoignez la communauté Groupomania!</h1>
     </div>
-
-    <FooterBar />
   </div>
+  <FooterBar />
 </template>
 
 <script>
@@ -31,9 +29,9 @@ export default {
   align-items: center;
   justify-content: center;
   /* background-color: red; */
-  height: 70%;
   color: #fd2d01;
   font-family: "Lato", sans-serif;
+  background-size: 100%;
 }
 .home-pic {
   display: flex;
@@ -44,10 +42,8 @@ export default {
 h1 {
   text-shadow: 2px 2px 4px #edeaea;
 }
-/* img {
-  position: absolute;
-  bottom: 29px;
+img {
+  margin-top: 45px;
   object-fit: cover;
-  width: 100%;
-} */
+}
 </style>

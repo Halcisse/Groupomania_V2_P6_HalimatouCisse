@@ -11,7 +11,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .footer {
   position: fixed;
   left: 0;
@@ -22,7 +22,7 @@ export default {
   font-family: "Lato", sans-serif;
   font-size: 8px;
   color: #4e5166;
-
   background-color: #dcdde7;
+  margin: 0;
 }
 </style>
