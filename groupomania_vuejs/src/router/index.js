@@ -11,35 +11,30 @@ const router = createRouter({
       component: () => import("@/views/HomePage.vue"),
     },
     {
-      path: "/feed",
-      name: "FeedPage",
-      component: () => import("@/views/Feed.vue"),
-    },
-    {
       path: "/login",
       name: "LogIn",
-      component: () => import("@/views/Login.vue"),
+      component: () => import("@/views/LoginPage.vue"),
     },
     {
       path: "/signup",
       name: "SignUp",
-      component: () => import("@/views/Signup.vue"),
+      component: () => import("@/views/SignupPage.vue"),
     },
 
     // Routage authentifié
-    // {
-    //   path: "/forum",
-    //   name: "ForumLayout",
-    //   beforeEnter: authGuard,
-    //   component: () => import("./views/ForumLayout.vue"),
-    //   children: [
-    //     // redirection vers forum en cas de mauvais routage
-    //     {
-    //       path: "/:PathMatch(.*)*",
-    //       component: () => import("./views/ForumLayout.vue"),
-    //     },
-    //   ],
-    // },
+    {
+      path: "/feed",
+      name: "FeedPage",
+      // beforeEnter: authGuard,
+      component: () => import("../views/FeedPage.vue"),
+      // children: [
+      //   // redirection vers forum en cas de mauvais routage
+      //   {
+      //     path: "/:PathMatch(.*)*",
+      //     component: () => import("./views/ForumLayout.vue"),
+      //   },
+      // ],
+    },
 
     // {
     //   path: "/login",
@@ -65,11 +60,11 @@ const router = createRouter({
     // },
 
     // redirection vers 404 en cas de mauvais routage
-    // {
-    //   path: "/:PathMatch(.*)*",
-    //   name: "notfound",
-    //   component: () => import("../views/public/NotFound.vue"),
-    // },
+    {
+      path: "/:PathMatch(.*)*",
+      name: "notfound",
+      component: () => import("../views/NotFound.vue"),
+    },
   ],
 });
 

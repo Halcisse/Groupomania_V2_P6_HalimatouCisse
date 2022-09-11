@@ -7,6 +7,11 @@ import { RouterView } from "vue-router";
 </script>
 
 <style>
+html,
+body {
+  height: 100%;
+  /* background-color: maroon; */
+}
 #app {
   display: flex;
   flex-direction: column;
