@@ -20,10 +20,14 @@ let isLogged = () => {
     return false;
   }
 };
+let getToken = () => {
+  return sessionStorage.getItem("token");
+};
 
 export const authServices = {
   login,
   signup,
   logout,
   isLogged,
+  getToken,
 };

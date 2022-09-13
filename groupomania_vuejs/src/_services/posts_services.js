@@ -1,24 +1,13 @@
-import Axios from "./caller_services";
-
-// async function getAllPosts(token) {
-//   let posts = await fetch("http://localhost:3000/api/posts", token, {
-//     headers: {
-//       Authorization: "Bearer " + token,
-//       "Content-Type": "application/json",
-//     },
-//     method: "GET",
-//   });
-//   return posts;
-// } 403
+import axios from "./api_services";
 
 let getAllPosts = () => {
-  return Axios.get("/");
+  return axios.get("/posts");
 };
 let getOnePost = (Credendials) => {
-  return Axios.get("/:id", Credendials);
+  return axios.get("/:id", Credendials);
 };
-let createPost = (Credendials) => {
-  return Axios.post("/", Credendials);
+let createPost = (post) => {
+  return axios.put("/", post);
 };
 
 // let modifyPost = (Credendial) => {

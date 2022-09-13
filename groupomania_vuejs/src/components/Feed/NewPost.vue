@@ -79,10 +79,10 @@ export default {
           .then((res) => res.json())
           .then((data) => {
             console.log("data", data);
-            // this.post.imageUrl = data.imageUrl;
-            // this.post.postId = data.postId;
-            // this.posts.push(this.post);
-            // this.$router.push("/forum");
+            this.post.imageUrl = data.imageUrl;
+            this.post.postId = data.postId;
+            this.posts.push(this.post);
+            this.$router.push("/feed");
           })
           .catch((err) => console.log(err));
       }
