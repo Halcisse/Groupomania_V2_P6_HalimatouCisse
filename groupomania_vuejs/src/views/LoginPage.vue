@@ -68,9 +68,6 @@ export default {
       authServices
         .login(user)
         .then((res) => {
-          if (authServices.isLogged == true) {
-            this.$router.push("/feed");
-          }
           alert("Login ok");
           sessionStorage.setItem("id", res.data.id);
           sessionStorage.setItem("token", res.data.token);

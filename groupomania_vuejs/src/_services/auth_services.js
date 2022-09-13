@@ -15,14 +15,10 @@ let logout = () => {
   window.location.reload();
 };
 
-let getToken = () => {
-  return sessionStorage.getItem("token");
-};
-
 let isLogged = () => {
   let token = sessionStorage.getItem("token");
-  if (token != undefined || token != "") {
-    return true;
+  if (!token) {
+    return false;
   }
 };
 
@@ -30,7 +26,5 @@ export const authServices = {
   login,
   signup,
   logout,
-  getToken,
-
   isLogged,
 };
