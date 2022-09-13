@@ -7,15 +7,17 @@
         Vous n'avez pas de compte?
         <router-link to="/signup">Inscrivez-vous!</router-link>
       </p>
-      <p v-if="errors.length">
-        <b>Merci de corriger les erreurs suivantes</b>
-      </p>
+      <div class="error">
+        <p v-if="errors.length">
+          <b>Merci de corriger les erreurs suivantes</b>
+        </p>
 
-      <ul>
-        <li class="champError" v-for="error in errors" :key="error">
-          {{ error }}
-        </li>
-      </ul>
+        <ul>
+          <li class="champError" v-for="error in errors" :key="error">
+            {{ error }}
+          </li>
+        </ul>
+      </div>
     </div>
     <form @submit.prevent="login" id="formulaire">
       <div class="champ_formulaire">
@@ -47,6 +49,7 @@
 <script>
 import HomeHeader from "../components/Home/HomeHeader.vue";
 import FooterBar from "@/components/FooterBar.vue";
+import { authServices } from "@/_services/auth_services";
 
 export default {
   name: "LogIn",
@@ -63,22 +66,12 @@ export default {
     login() {
       let user = this.user;
 
-      fetch("http://localhost:3000/api/auth/login", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(user),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data), console.log(data.token);
-          if (data.token) {
-            sessionStorage.setItem("token", data.token);
-            sessionStorage.setItem("id", data.id);
-            this.$router.push("/forum");
-          }
+      authServices
+        .login(user)
+        .then((res) => {
+          alert("Login ok");
+          sessionStorage.setItem("id", res.id);
+          this.$router.push("/feed");
         })
         .catch((err) => console.log(err));
     },
@@ -142,9 +135,9 @@ button {
   color: #fd2d01;
 }
 
-.champError {
+.error {
   color: #fd2d01;
-  font-size: smaller;
+  font-size: 9px;
   font-style: italic;
 }
 </style>

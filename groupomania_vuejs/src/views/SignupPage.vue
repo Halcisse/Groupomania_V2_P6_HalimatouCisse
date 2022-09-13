@@ -98,7 +98,8 @@ export default {
       }
       //on verifie l'email
       let email = this.user.email;
-      let regexEmail = /^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$/;
+      let regexEmail =
+        /^([a-zA-Z0-9]+).([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$/;
       console.log(regexEmail.test(email));
       if (regexEmail.test(email) == false || email == "") {
         this.errors.splice(
@@ -130,37 +131,18 @@ export default {
         regexEmail.test(email) == true &&
         regexPassword.test(password) == true
       ) {
-        alert("Le compte a été crée avec succès! Veuillez vous connecter");
+        alert(
+          "Félicitations,le compte a été crée avec succès! Vous pouvez vous connecter"
+        );
         authServices
           .signup(user)
           .then((res) => {
-            // authServices.saveToken(res.data.token);
             let token = res.data.token;
             sessionStorage.setItem("token", token);
             sessionStorage.setItem("user", JSON.stringify(user));
             this.$router.push("/login");
           })
           .catch((err) => console.log(err));
-
-        // fetch("http://localhost:3000/api/auth/signup", {
-        //   headers: {
-        //     Accept: "application/json",
-        //     "Content-Type": "application/json",
-        //   },
-        //   method: "POST",
-        //   body: JSON.stringify(user),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     console.log("data", data);
-        //     // if (data.token && data.token != undefined && data.token != "") {
-        //     //   //Si la creation du compte est ok alors les actions si dessous
-        //     //   sessionStorage.setItem("token", data.token);
-        //     //   this.errors = [];
-        //     //   this.$router.push("/forum");
-        //     // }
-        //   })
-        //   .catch((err) => console.log(err));
       }
     },
   },
