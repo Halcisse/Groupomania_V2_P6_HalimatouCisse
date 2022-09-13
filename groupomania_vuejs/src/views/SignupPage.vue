@@ -63,12 +63,14 @@
       <button type="submit" id=" btn_inscription">Je valide</button>
     </form>
   </div>
+  <FooterBar />
 </template>
 
 <!-- cisse hal test3@groupomania.com Groupomani@123 -->
 
 <script>
 import HomeHeader from "@/components/Home/HomeHeader.vue";
+import FooterBar from "@/components/FooterBar.vue";
 
 export default {
   name: "SignUp",
@@ -154,7 +156,7 @@ export default {
       }
     },
   },
-  components: { HomeHeader },
+  components: { HomeHeader, FooterBar },
 };
 </script>
 
