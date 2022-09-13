@@ -15,7 +15,8 @@ import { RouterView } from "vue-router";
   height: 100%;
   /* background-color: aqua; */
 }
-a {
+a,
+button {
   text-decoration: none;
   font-family: "Lato", sans-serif;
   color: #bebfcb;
