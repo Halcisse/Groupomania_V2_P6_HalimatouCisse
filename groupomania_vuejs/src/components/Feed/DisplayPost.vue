@@ -16,6 +16,6 @@ div {
   align-items: center;
   border: 2px solid pink;
   color: pink;
-  height: auto;
+  height: 100%;
 }
 </style>

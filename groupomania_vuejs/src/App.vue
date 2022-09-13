@@ -7,12 +7,17 @@ import { RouterView } from "vue-router";
 </script>
 
 <style>
+html,
+body {
+  height: 100%;
+}
 #app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+  margin: auto 2px;
   /* background-color: aqua; */
 }
 a,

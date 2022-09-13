@@ -18,7 +18,6 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 3px 3px;
-  border-right: 1px solid black;
 }
 a {
   color: #84868e;
@@ -27,7 +26,7 @@ a {
 a:hover {
   background-color: #fd2d01;
   color: #fff;
-  width: 40%;
+  width: 80%;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }

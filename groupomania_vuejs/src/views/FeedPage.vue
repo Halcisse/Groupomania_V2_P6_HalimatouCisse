@@ -11,18 +11,18 @@
       </div>
     </div>
   </div>
-  <!-- <FooterBar /> -->
+  <FooterBar />
 </template>
 
 <script>
 import FeedHeader from "@/components/Feed/FeedHeader.vue";
-// import FooterBar from "@/components/FooterBar.vue";
+import FooterBar from "@/components/FooterBar.vue";
 import FeedNav from "@/components/Feed/FeedNav.vue";
 import DisplayPost from "@/components/Feed/DisplayPost.vue";
 import NewPost from "@/components/Feed/NewPost.vue";
 export default {
   name: "FeedPage",
-  components: { FeedHeader, FeedNav, DisplayPost, NewPost },
+  components: { FeedHeader, FeedNav, DisplayPost, NewPost, FooterBar },
 };
 </script>
 
@@ -46,11 +46,13 @@ export default {
   height: 100%;
 }
 .feed-aside {
-  width: 40%;
+  width: 19%;
   height: 100%;
+  border-right: 3px solid #fd2d01;
 }
 .item-create {
   height: 20%;
+  margin: 14px 0 162px 4px;
 }
 /* .item-display {
   height: 100%;

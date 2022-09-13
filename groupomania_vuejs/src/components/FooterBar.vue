@@ -13,10 +13,7 @@ export default {
 
 <style scoped>
 footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
   padding: 4px;
   text-align: center;
   font-family: "Lato", sans-serif;
@@ -24,7 +21,6 @@ footer {
   color: #fd2d01;
   font-weight: bold;
   background-color: #dcdde7;
-  margin: 0;
   opacity: 0.4;
 }
 </style>
