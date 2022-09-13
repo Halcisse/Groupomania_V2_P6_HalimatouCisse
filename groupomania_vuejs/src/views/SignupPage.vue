@@ -7,21 +7,23 @@
         Vous avez déjà un compte?
         <router-link to="/login">Connectez-vous!</router-link>
       </p>
-      <p v-if="errors.length">
-        <b>Merci de corriger les erreurs suivantes</b>
-      </p>
+      <div class="error">
+        <p v-if="errors.length">
+          <b>Merci de corriger les erreurs suivantes</b>
+        </p>
 
-      <!-- <ul>
-        <li class="champError" v-for="error in errors">{{ error }}</li>
-      </ul> -->
+        <ul>
+          <li class="champError" v-for="error in errors" :key="error">
+            {{ error }}
+          </li>
+        </ul>
+      </div>
     </div>
     <form @submit.prevent="signup" id="formulaire">
       <div class="champ_formulaire">
         <label for="lastName">Nom </label>
         <input
           type="text"
-          name="lastName"
-          id="lastName"
           placeholder="Ex: Durant "
           v-model="user.lastName"
           required
@@ -31,8 +33,6 @@
         <label for="firstName">Prénom</label>
         <input
           type="text"
-          name="firstName"
-          id="firstName"
           placeholder="Ex: Magalie"
           v-model="user.firstName"
           required
@@ -42,8 +42,6 @@
         <label for="email">Adresse email</label>
         <input
           type="email"
-          name="email"
-          id="email"
           placeholder="Ex: nom.prenom@email.com"
           v-model="user.email"
           required
@@ -53,9 +51,7 @@
         <label for="password">Mot de passe</label>
         <input
           type="password"
-          name="password"
-          id="password"
-          placeholder="Minimum 6 caractères"
+          placeholder="min 6 caractères, 1 majuscule, 1 minuscule, 1 chiffre"
           v-model="user.password"
           required
         />
@@ -71,6 +67,7 @@
 <script>
 import HomeHeader from "@/components/Home/HomeHeader.vue";
 import FooterBar from "@/components/FooterBar.vue";
+import { authServices } from "@/_services/auth_services";
 
 export default {
   name: "SignUp",
@@ -91,68 +88,79 @@ export default {
     signup() {
       console.log(this.errors);
       let password = this.user.password;
-      if (!password.isValid) {
+      let regexPassword = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*\d).*$/;
+      if (regexPassword.test(password) == false || password == "") {
         this.errors.splice(
           0,
           1,
-          "Le mot de passe doit avoir  au moins 6 caractères, une majuscule et une minuscule"
+          "Le mot de passe doit avoir au moins 6 caractères, une majuscule, une minuscule et un chiffre"
         );
       }
       //on verifie l'email
       let email = this.user.email;
-      let regexpEmail = /^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$/;
-      console.log(regexpEmail.test(email));
-      if (regexpEmail.test(email) == false || email == "") {
+      let regexEmail = /^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$/;
+      console.log(regexEmail.test(email));
+      if (regexEmail.test(email) == false || email == "") {
         this.errors.splice(
           0,
           1,
-          "L'adresse email n'est pas conforme. Ex: test@exemple.com",
-          this.$router.push("/login")
+          "L'adresse email n'est pas conforme. Ex: test@exemple.com"
         );
       }
       //on verifie le nom
       let lastName = this.user.lastName;
-      let regexplastName =
+      let regexLastName =
         /^(([A-Za-zÉÈÎÏéèêîïàç]+['.]?[ ]?|[a-zéèêîïàç]+['-]?)+)$/;
-      console.log(regexplastName.test(lastName));
-      if (regexplastName.test(lastName) == false || lastName == "") {
-        this.errors.splice(0, 1, "Merci d'indiquer un Nom conforme");
+      if (regexLastName.test(lastName) == false || lastName == "") {
+        this.errors.splice(0, 1, "Le nom n'est pas conforme");
       }
       //on verifie le prenom
       let firstName = this.user.firstName;
-      let regexpfirstName =
+      let regexFirstName =
         /^(([A-Za-zÉÈÎÏéèêîïàç]+['.]?[ ]?|[a-zéèêîïàç]+['-]?)+)$/;
-      console.log(regexpfirstName.test(firstName));
-      if (regexpfirstName.test(firstName) == false || firstName == "") {
-        this.errors.splice(0, 1, "Merci d'indiquer un Prénom conforme");
+      if (regexFirstName.test(firstName) == false || firstName == "") {
+        this.errors.splice(0, 1, "Le prénom n'est pas conforme");
       }
       //on définis le user a envoyer a la bdd
-      let users = { lastName, firstName, email, password };
-      console.log(users);
+      let user = { lastName, firstName, email, password };
+      console.log(user);
       if (
-        regexplastName.test(lastName) == true &&
-        regexpfirstName.test(firstName) == true &&
-        regexpEmail.test(email) == true &&
-        password != ""
+        regexLastName.test(lastName) == true &&
+        regexFirstName.test(firstName) == true &&
+        regexEmail.test(email) == true &&
+        regexPassword.test(password) == true
       ) {
-        sessionStorage.setItem("users", JSON.stringify(users));
-        fetch("http://localhost:3000/api/auth/signup", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify(users),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.token && data.token != undefined && data.token != "") {
-              //Si la creation du compte est ok alors les actions si dessous
-              sessionStorage.setItem("token", data.token);
-              this.$router.push("/forum");
-            }
+        alert("Le compte a été crée avec succès! Veuillez vous connecter");
+        authServices
+          .signup(user)
+          .then((res) => {
+            // authServices.saveToken(res.data.token);
+            let token = res.data.token;
+            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("user", JSON.stringify(user));
+            this.$router.push("/login");
           })
           .catch((err) => console.log(err));
+
+        // fetch("http://localhost:3000/api/auth/signup", {
+        //   headers: {
+        //     Accept: "application/json",
+        //     "Content-Type": "application/json",
+        //   },
+        //   method: "POST",
+        //   body: JSON.stringify(user),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log("data", data);
+        //     // if (data.token && data.token != undefined && data.token != "") {
+        //     //   //Si la creation du compte est ok alors les actions si dessous
+        //     //   sessionStorage.setItem("token", data.token);
+        //     //   this.errors = [];
+        //     //   this.$router.push("/forum");
+        //     // }
+        //   })
+        //   .catch((err) => console.log(err));
       }
     },
   },
@@ -179,9 +187,9 @@ export default {
 }
 p,
 label {
-  margin: 5px;
+  margin: 2px;
   font-family: "Lato", sans-serif;
-  font-size: 13px;
+  font-size: 11px;
 }
 h2 {
   margin: 5px;
@@ -215,9 +223,9 @@ button {
   color: #fd2d01;
 }
 
-.champError {
+.error {
   color: #fd2d01;
-  font-size: smaller;
+  font-size: 9px;
   font-style: italic;
 }
 </style>

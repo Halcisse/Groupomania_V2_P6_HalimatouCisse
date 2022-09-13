@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import { authGuard } from "../_helpers/auth-guard";
+import { authGuard } from "../_helpers/auth-guard";
 
 const router = createRouter({
   history: createWebHistory(""),
@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: "/feed",
       name: "FeedPage",
-      // beforeEnter: authGuard,
+      beforeEnter: authGuard,
       component: () => import("../views/FeedPage.vue"),
       // children: [
       //   // redirection vers forum en cas de mauvais routage
@@ -36,16 +36,6 @@ const router = createRouter({
       // ],
     },
 
-    // {
-    //   path: "/login",
-    //   name: "Login",
-    //   component: () => import("../components/Login.vue"),
-    // },
-    // {
-    //   path: "/signup",
-    //   name: "SignUp",
-    //   component: () => import("../components/Signup.vue"),
-    // },
     // {
     //   path: "/edit/:id",
     //   name: "edit",
@@ -68,11 +58,11 @@ const router = createRouter({
   ],
 });
 
-//pour que l'admin n'est plus accès a ses fct lorsqu'il n'y a plus de token (expiration)
-// router.beforeEach((to, from, next) => {
-//   if (to.matched[0].name == "admin" || to.matched[0].name == "forum") {
-//     authGuard();
-//   }
-//   next();
-// });
+//plus accès a ses fct lorsqu'il n'y a plus de token (expiration)
+router.beforeEach((to, from, next) => {
+  if (to.matched[0].name == "feedPage") {
+    authGuard();
+  }
+  next();
+});
 export default router;

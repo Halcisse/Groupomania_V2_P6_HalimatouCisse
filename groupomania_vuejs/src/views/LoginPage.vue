@@ -7,22 +7,21 @@
         Vous n'avez pas de compte?
         <router-link to="/signup">Inscrivez-vous!</router-link>
       </p>
-      <!--   <p v-if="errors.length">
+      <p v-if="errors.length">
         <b>Merci de corriger les erreurs suivantes</b>
       </p>
 
       <ul>
-        <li class="champError" v-for="error in errors">{{ error }}</li>
+        <li class="champError" v-for="error in errors" :key="error">
+          {{ error }}
+        </li>
       </ul>
-      -->
     </div>
     <form @submit.prevent="login" id="formulaire">
       <div class="champ_formulaire">
         <label for="email">Adresse email</label>
         <input
           type="email"
-          name="email"
-          id="email"
           placeholder="Ex: nom.prenom@email.com"
           v-model="user.email"
           required
@@ -32,9 +31,7 @@
         <label for="password">Mot de passe</label>
         <input
           type="password"
-          name="password"
-          id="password"
-          placeholder="Minimum 6 caractères"
+          placeholder="min 6 caractères, 1 majuscule, 1 minuscule, 1 chiffre"
           v-model="user.password"
           required
         />
@@ -50,7 +47,6 @@
 <script>
 import HomeHeader from "../components/Home/HomeHeader.vue";
 import FooterBar from "@/components/FooterBar.vue";
-// import HomeHeader from "@/components/Home/HomeHeader.vue";
 
 export default {
   name: "LogIn",
@@ -60,17 +56,20 @@ export default {
         email: "",
         password: "",
       },
+      errors: [],
     };
   },
   methods: {
     login() {
+      let user = this.user;
+
       fetch("http://localhost:3000/api/auth/login", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
-        body: JSON.stringify(this.user),
+        body: JSON.stringify(user),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -107,9 +106,9 @@ export default {
 }
 p,
 label {
-  margin: 5px;
+  margin: 2px;
   font-family: "Lato", sans-serif;
-  font-size: 13px;
+  font-size: 11px;
 }
 h2 {
   margin: 5px;

@@ -6,7 +6,7 @@
         src="../assets/groupo-img.jpg"
         alt="illustration du logo groupomania"
       />
-      <h1>Rejoignez la communauté Groupomania!</h1>
+      <h2>Rejoignez la communauté Groupomania!</h2>
     </div>
   </div>
   <FooterBar />
