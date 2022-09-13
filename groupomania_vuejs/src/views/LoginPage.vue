@@ -65,15 +65,24 @@ export default {
   methods: {
     login() {
       let user = this.user;
-
       authServices
         .login(user)
         .then((res) => {
           alert("Login ok");
-          sessionStorage.setItem("id", res.id);
+          sessionStorage.setItem("id", res.data.id);
+          sessionStorage.setItem("token", res.data.token);
+          sessionStorage.setItem("user", JSON.stringify(user));
           this.$router.push("/feed");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          if (err) {
+            this.errors.splice(
+              0,
+              1,
+              "Accès refusé, merci de vérifier vos identifiants"
+            );
+          }
+        });
     },
   },
   components: { HomeHeader, FooterBar },
