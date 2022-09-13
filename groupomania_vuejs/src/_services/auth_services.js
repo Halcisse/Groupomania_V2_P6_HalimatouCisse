@@ -12,7 +12,6 @@ let logout = () => {
   sessionStorage.removeItem("user");
   sessionStorage.removeItem("id");
   sessionStorage.removeItem("post");
-  window.location.reload();
 };
 
 let isLogged = () => {

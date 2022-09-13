@@ -21,5 +21,6 @@ button {
   font-family: "Lato", sans-serif;
   color: #bebfcb;
   transition: 0.2s;
+  margin-bottom: 9px;
 }
 </style>

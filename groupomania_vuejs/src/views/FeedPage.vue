@@ -40,7 +40,6 @@ export default {
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  border: 2px solid orange;
 }
 .feed-main {
   width: 100%;

@@ -28,7 +28,6 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 3px 9px;
-  margin-bottom: 8px;
   border-bottom: solid 1px #dcdde7;
   width: 100%;
 }

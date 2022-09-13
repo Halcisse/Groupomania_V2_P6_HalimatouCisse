@@ -27,26 +27,12 @@ const router = createRouter({
       name: "FeedPage",
       beforeEnter: authGuard,
       component: () => import("../views/FeedPage.vue"),
-      // children: [
-      //   // redirection vers forum en cas de mauvais routage
-      //   {
-      //     path: "/:PathMatch(.*)*",
-      //     component: () => import("./views/ForumLayout.vue"),
-      //   },
-      // ],
     },
-
     // {
-    //   path: "/edit/:id",
-    //   name: "edit",
-    //   component: () => import("../components/forum/EditPost.vue"),
-    //   props: true,
-    // },
-    // {
-    //   path: "/delete/:id",
-    //   name: "delete",
-    //   component: () => import("../components/forum/DeletePost.vue"),
-    //   props: true,
+    //   path: "/profil",
+    //   name: "ProfilPage",
+    //   beforeEnter: authGuard,
+    //   component: () => import("../views/ProfilPage.vue"),
     // },
 
     // redirection vers 404 en cas de mauvais routage

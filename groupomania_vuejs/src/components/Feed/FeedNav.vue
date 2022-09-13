@@ -1,5 +1,10 @@
 <template>
-  <div>FEED NAV</div>
+  <div class="menu">
+    <!-- faire lien vers page perso  -->
+    <router-link to="/profil">Profil</router-link>
+    <router-link to="/feed">Actualités</router-link>
+    <router-link to="/">Home</router-link>
+  </div>
 </template>
 
 <script>
@@ -9,17 +14,21 @@ export default {
 </script>
 
 <style scoped>
-div {
+.menu {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border: 2px solid yellow;
-  color: yellow;
-
-  height: 100%;
-  padding: 0 2px;
-  border-right: 0;
-  border-right: solid 1px black;
+  padding: 3px 3px;
+  border-right: 1px solid black;
+}
+a {
+  color: #84868e;
+  padding: 5px;
+}
+a:hover {
+  background-color: #fd2d01;
+  color: #fff;
+  width: 40%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 </style>
