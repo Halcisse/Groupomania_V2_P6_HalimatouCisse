@@ -1,10 +1,8 @@
-import { CreateStore } from "vue";
-import Vue from "vue";
-import Vuex from "vuex";
-import StorePost from "./StorePost.js";
+// import { createStore } from "vuex";
 
-Vue.use(Vuex);
-const store = new Vue.CreateStore({
-  modules: { StorePost: StorePost },
-});
-export default store;
+// import StorePost from "./StorePost.js";
+
+// const store = createStore({
+//   modules: { StorePost: StorePost },
+// });
+// export default store;

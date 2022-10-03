@@ -8,9 +8,7 @@
         <router-link to="/signup">Inscrivez-vous!</router-link>
       </p>
       <div class="error">
-        <p v-if="errors.length">
-          <b>Merci de corriger les erreurs suivantes</b>
-        </p>
+        <p v-if="errors.length"></p>
 
         <ul>
           <li class="champError" v-for="error in errors" :key="error">

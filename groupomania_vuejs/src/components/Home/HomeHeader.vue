@@ -3,8 +3,8 @@
     <div class="header-titre">GROUPOMANIA</div>
     <div class="header-nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/login" @click="isLogged">Connexion</router-link>
-      <router-link to="/signup" @click="isLogged">Inscription</router-link>
+      <router-link to="/login">Connexion</router-link>
+      <router-link to="/signup">Inscription</router-link>
     </div>
   </header>
 </template>
