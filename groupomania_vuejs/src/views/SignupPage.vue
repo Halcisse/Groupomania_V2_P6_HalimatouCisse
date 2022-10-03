@@ -132,7 +132,7 @@ export default {
         regexPassword.test(password) == true
       ) {
         alert(
-          "Félicitations,le compte a été crée avec succès! Vous pouvez vous connecter"
+          "Félicitation,le compte a été crée avec succès! Vous pouvez vous connecter"
         );
         authServices
           .signup(user)

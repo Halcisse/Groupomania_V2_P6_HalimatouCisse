@@ -22,7 +22,7 @@ const PostRoute = require("./routes/posts");
 //Connexion à la base de donnée avec Mongoose
 mongoose
   .connect(
-    "mongodb+srv://groupomania:CWJeTu9b6EodUXOQ@cluster0.a34roiw.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://Groupomania_bd:m4PWbYAnO407bOWV@cluster0.a34roiw.mongodb.net/?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))

@@ -1,23 +1,5 @@
 <template>
-  <div class="post">
-    <p>post single</p>
-    <div class="postMessage">{{ post.message }}</div>
-    <img :src="post.imageUrl" />
-
-    <div class="postItem">
-      <div class="iconLikes">
-        <icon icon="thumbs-up" /> <icon icon="thumbs-down" />
-      </div>
-      <div class="iconUpdate">
-        <router-link :to="{ name: 'delete', params: { id: post._id } }">
-          <icon icon="trash-can" />
-        </router-link>
-        <router-link :to="{ name: 'edit', params: { id: post._id } }">
-          <icon icon="eraser" />
-        </router-link>
-      </div>
-    </div>
-  </div>
+  <h1>SINGLE</h1>
 </template>
 
 <script>
